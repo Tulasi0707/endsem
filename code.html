@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Image Gallery</title>
+
+<style>
+    body{
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+    }
+
+    /* Gallery Grid */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Modal (Large Image View) */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal img {
+        width: 90%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+</style>
+
+<script>
+    function openModal(src) {
+        document.getElementById("modal").style.display = "flex";
+        document.getElementById("modalImg").src = src;
+    }
+
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+</script>
+
+</head>
+<body>
+
+<h2 style="text-align:center; padding:15px;">My Project Image Gallery</h2>
+
+<!-- Gallery -->
+<div class="gallery">
+    <img src="pink tulips.jpg" onclick="openModal('pink tulips.jpg')" alt="Project 1">
+    <img src="img2.jpg" onclick="openModal('img2.jpg')" alt="Project 2">
+    <img src="img3.jpg" onclick="openModal('img3.jpg')" alt="Project 3">
+    <img src="doggo.jpg" onclick="openModal('doggo.jpg')" alt="Project 4">
+    <img src="galaxy.jpg" onclick="openModal('galaxy.jpg')" alt="Project 1">
+    <img src="image_0.jpg" onclick="openModal('image_0.jpg')" alt="Project 1">
+</div>
+
+<!-- Modal Popup -->
+<div class="modal" id="modal" onclick="closeModal()">
+    <img id="modalImg">
+</div>
+
+</body>
+</html>
